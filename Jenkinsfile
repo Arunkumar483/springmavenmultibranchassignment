@@ -5,6 +5,6 @@ node{
     }
     stage('build docker image')
     {
-        sh "docker build -t build-$CurrentBuild.number --build-arg BRANCH=$env.BRANCH_NAME ."
+        sh "docker build -t build-$currentBuild.number --build-arg BRANCH=$env.BRANCH_NAME ."
     }
 }
