@@ -1,5 +1,7 @@
 FROM maven:3.6-jdk-11-slim as BUILD
 ARG BRANCH
+RUN apt-get update
+RUN apt-get install -y git
 WORKDIR /src
 RUN echo $BRANCH
 RUN git clone --single-branch -b $BRANCH https://github.com/Arunkumar483/springmavenmultibranchassignment.git .
