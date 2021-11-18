@@ -1,6 +1,8 @@
 FROM maven:3.6-jdk-11-slim as BUILD
-COPY . /src
+ARG BRANCH
 WORKDIR /src
+RUN echo $BRANCH
+RUN git clone --single-branch -b $BRANCH https://github.com/Arunkumar483/springmavenmultibranchassignment.git .
 RUN mvn install -DskipTests
 
 FROM openjdk:11.0.1-jre-slim-stretch
@@ -9,4 +11,4 @@ WORKDIR /app
 ARG JAR=hello-0.0.1-SNAPSHOT.jar
 
 COPY --from=BUILD /src/target/$JAR /app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"] 
