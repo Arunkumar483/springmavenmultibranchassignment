@@ -5,7 +5,7 @@ RUN apt-get install -y git
 WORKDIR /src
 RUN echo $BRANCH
 RUN git clone --single-branch -b $BRANCH https://github.com/Arunkumar483/springmavenmultibranchassignment.git .
-RUN mvn install -DskipTests
+RUN mvn clean install
 
 FROM openjdk:11.0.1-jre-slim-stretch
 EXPOSE 8080
